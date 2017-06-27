@@ -96,9 +96,9 @@ public class FileMune {
 		int index = editorFrame.jTabbedPane.getSelectedIndex();
 		String fileName = editorFrame.jTabbedPane.getToolTipTextAt(index);
 		// 如果
-		if(fileName==null){
+		if (fileName == null) {
 			this.doSaveAs(editorFrame);
-		}else{
+		} else {
 			new EditorTool().searchFileForSave(editorFrame.jTreeFile, fileName);
 			try {
 				BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(editorFrame.jTreeFile));
@@ -154,25 +154,39 @@ public class FileMune {
 					}
 					if (tempFile == null) {
 						// 是叶节点，并且不是文件夹
-						try {
-							BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-							String string = null;
-							int index = editorFrame.jTabbedPane.getComponentCount();
-							editorFrame.jTextArea[index] = new JTextArea();
-							int lineNumber = 1;
-							while ((string = bufferedReader.readLine()) != null) {
-								editorFrame.jTextArea[index].append(string + "\n");
+						int index = editorFrame.jTabbedPane.getComponentCount();
+						boolean flag=true;
+						for(int i=0;i<index;i++){
+							String name=editorFrame.jTabbedPane.getTitleAt(i);
+							if(name.equals(editorTool.bSubstring(nodeName, 20))){
+								flag=false;
+								break;
 							}
-							editorFrame.jTabbedPane.addTab(editorTool.bSubstring(nodeName, 10), null,
+						}
+						if(flag){
+							String string = null;
+							BufferedReader bufferedReader = null;
+							try {
+								bufferedReader = new BufferedReader(new FileReader(file));
+								editorFrame.jTextArea[index] = new JTextArea();
+								while ((string = bufferedReader.readLine()) != null) {
+									editorFrame.jTextArea[index].append(string + "\n");
+								}
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+							editorFrame.jTabbedPane.addTab(editorTool.bSubstring(nodeName, 20), null,
 									editorFrame.jTextArea[index], nodeName);
 							editorFrame.jTextArea[index]
 									.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, editorFrame.fontSize));
 							editorFrame.jTabbedPane.setSelectedIndex(index);
 							editorFrame.jTextArea[index].setCaretPosition(0);
 							editorFrame.jTextArea[index].getDocument().addUndoableEditListener(editorFrame.undoManager);
-							bufferedReader.close();
-						} catch (Exception e1) {
-							e1.printStackTrace();
+							try {
+								bufferedReader.close();
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
 						}
 					}
 				}

@@ -1,6 +1,7 @@
 package com.lanqiao.editor.tools;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 
 import com.lanqiao.editor.component.EditorFrame;
 import com.lanqiao.editor.component.FileMune;
@@ -35,8 +36,13 @@ public class EditorTool {
 		}
 	}
 
-	public static String bSubstring(String string, int length) throws Exception {
-		byte[] bytes = string.getBytes("Unicode");
+	public static String bSubstring(String string, int length) {
+		byte[] bytes = null;
+		try {
+			bytes = string.getBytes("Unicode");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		int n = 0; // 表示当前的字节数
 		int i = 2; // 要截取的字节数，从第3个字节开始
 		for (; i < bytes.length && n < length; i++) {
@@ -59,8 +65,14 @@ public class EditorTool {
 			else
 				i = i + 1;
 		}
-		if (bytes.length > 5) {
-			return new String(bytes, 0, i, "Unicode") + "…";
+		if (bytes.length > 20) {
+			String string2 = null;
+			try {
+				string2 = new String(bytes, 0, i, "Unicode") + "…";
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			return string2;
 		} else {
 			return string + "     ";
 		}
