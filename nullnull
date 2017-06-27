@@ -1,0 +1,11 @@
+	// ´ò¿ª
+		fileMune.openItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					fileMune.doOpenFile(editorFrame);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});

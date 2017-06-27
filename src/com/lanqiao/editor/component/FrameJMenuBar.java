@@ -26,8 +26,6 @@ public class FrameJMenuBar {
 		editMune.add(new EditMune().reduceItem);
 		
 		searchMune.add(new SearchMune().lookupItem);
-		searchMune.add(new SearchMune().replaceItem);
-		searchMune.add(new SearchMune().markItem);
 		
 	}
 	

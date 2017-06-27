@@ -81,7 +81,7 @@ public class FileMune {
 	public void createTab(EditorFrame editorFrame) {
 		int index = editorFrame.jTabbedPane.getComponentCount();
 		editorFrame.jTextArea[index] = new JTextArea();
-		editorFrame.jTextArea[index].setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, editorFrame.fontSize));
+		editorFrame.jTextArea[index].setFont(new Font("ËÎÌו", Font.CENTER_BASELINE, editorFrame.fontSize));
 		editorFrame.jTabbedPane.addTab("new " + (int) (index + 1), editorFrame.jTextArea[index]);
 		editorFrame.jTabbedPane.setSelectedIndex(index);
 		editorFrame.jTextArea[index].setCaretPosition(0);

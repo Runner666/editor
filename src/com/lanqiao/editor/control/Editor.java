@@ -17,6 +17,7 @@ import javax.swing.undo.UndoManager;
 import com.lanqiao.editor.component.EditMune;
 import com.lanqiao.editor.component.EditorFrame;
 import com.lanqiao.editor.component.FileMune;
+import com.lanqiao.editor.component.SearchMune;
 import com.lanqiao.editor.tools.EditManage;
 import com.lanqiao.editor.tools.EditorTool;
 
@@ -25,6 +26,7 @@ public class Editor {
 		final EditorFrame editorFrame = new EditorFrame();
 		final FileMune fileMune = new FileMune();
 		final EditMune editMune=new EditMune();
+		final SearchMune searchMune=new SearchMune();
 		// 新建编辑区
 		fileMune.newItem.addActionListener(new ActionListener() {
 			@Override
@@ -114,6 +116,15 @@ public class Editor {
 				if(editorFrame.undoManager.canUndo()){
 					editorFrame.undoManager.undo();
 				}
+			}
+		});
+		
+		//查找
+		searchMune.lookupItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int index=editorFrame.jTabbedPane.getSelectedIndex();
+				searchMune.doLookup(editorFrame.jTextArea[index]);
 			}
 		});
 	}
