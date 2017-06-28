@@ -41,8 +41,8 @@ public class EditorFrame {
 		jMenuBar.add(frameJMenuBar.fileMune);
 		jMenuBar.add(frameJMenuBar.editMune);
 		jMenuBar.add(frameJMenuBar.searchMune);
-		jMenuBar.add(frameJMenuBar.setingMune);
-		jMenuBar.add(frameJMenuBar.winMune);
+		//jMenuBar.add(frameJMenuBar.setingMune);
+		//jMenuBar.add(frameJMenuBar.winMune);
 		jMenuBar.add(frameJMenuBar.helpMune);
 		jFrame.setJMenuBar(jMenuBar);
 

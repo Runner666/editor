@@ -16,7 +16,6 @@ public class FrameJMenuBar {
 		fileMune.add(new FileMune().openItem);
 		fileMune.add(new FileMune().saveItem);
 		fileMune.add(new FileMune().saveAsItem);
-		fileMune.add(new FileMune().printItem);
 		fileMune.add(new FileMune().closeItem);
 		fileMune.add(new FileMune().exitItem);
 		

@@ -33,7 +33,6 @@ public class FileMune {
 	public static final JMenuItem openItem = new JMenuItem("打开");
 	public static final JMenuItem saveItem = new JMenuItem("保存");
 	public static final JMenuItem saveAsItem = new JMenuItem("另存为");
-	public static final JMenuItem printItem = new JMenuItem("打印");
 	public static final JMenuItem closeItem = new JMenuItem("关闭");
 	public static final JMenuItem exitItem = new JMenuItem("退出");
 	public static File file;
@@ -156,7 +155,8 @@ public class FileMune {
 						// 是叶节点，并且不是文件夹
 						int index = editorFrame.jTabbedPane.getComponentCount();
 						boolean flag=true;
-						for(int i=0;i<index;i++){
+						int i=0;
+						for(;i<index;i++){
 							String name=editorFrame.jTabbedPane.getTitleAt(i);
 							if(name.equals(editorTool.bSubstring(nodeName, 20))){
 								flag=false;
@@ -187,6 +187,9 @@ public class FileMune {
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
+						}else{
+							editorFrame.jTabbedPane.setSelectedIndex(i);
+							editorFrame.jTextArea[i].setCaretPosition(0);
 						}
 					}
 				}
